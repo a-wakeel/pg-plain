@@ -5,6 +5,7 @@ import psycopg2.extras
 logger = logging.getLogger(__name__)
 
 
+# noinspection SpellCheckingInspection
 class Pg:
     def __init__(self):
         logger.debug('initializing postgres')
@@ -49,9 +50,10 @@ class Pg:
         except Exception as e:
             logger.exception(e.message)
 
-    def execute(self, query):
+    def execute(self, query, params):
         """
         Execute query on the database
+        :param params: query parameters
         :param query: database query
         :type query: str
         :return: boolean
@@ -62,10 +64,10 @@ class Pg:
 
         try:
             if query.split()[0].lower() == 'select':
-                self.cursor.execute(query)
+                self.cursor.execute(query, params)
                 return self.cursor.fetchall()
             else:
-                return self.cursor.execute(query)
+                return self.cursor.execute(query, params)
         except Exception as e:
             logger.exception(e.message)
             return False
@@ -93,4 +95,4 @@ class Pg:
             return self.conn.close()
         except Exception as e:
             logger.exception(e.message)
-        return False
+            return False

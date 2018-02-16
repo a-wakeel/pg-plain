@@ -7,7 +7,7 @@ from psycopg2.pool import ThreadedConnectionPool
 logger = logging.getLogger(__name__)
 
 
-# Multi-threaded & Singleton wrapper to the postgres driver
+# noinspection SpellCheckingInspection
 class PgPool:
     def __init__(self):
         logger.debug('initializing postgres threaded pool')
@@ -21,7 +21,7 @@ class PgPool:
             db=self.database, user=self.user, passwd=self.passwd
         ))
 
-    def create_pool(self, conn_dict):
+    def create_pool(self, conn_dict, limits):
         """
         Create a connection pool
 
@@ -47,7 +47,7 @@ class PgPool:
 
         try:
             logger.debug('creating pool')
-            self.pool = ThreadedConnectionPool(1, 50, conn_params)
+            self.pool = ThreadedConnectionPool(int(limits["Min"]), int(limits["Max"]), conn_params)
         except Exception as e:
             logger.exception(e.message)
 
