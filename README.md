@@ -18,3 +18,10 @@ A plain wrapper around psycopg2
 
 ## Usage
 For usage see the [examples](docs/EXAMPLES.md) document.
+
+## Licensing
+[MIT](LICENSE)
+
+## References
+* [Python 2.7](https://www.python.org/download/releases/2.7/)
+* [Psycopg2](https://pypi.python.org/pypi/psycopg2)
