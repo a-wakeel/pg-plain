@@ -2,6 +2,11 @@
 A plain wrapper around psycopg2
 
 ## Installation
+### Using pip
+```python
+   pip install pg-plain 
+```
+### Manual
 1. Clone or download the repository
 2. Install the package requirements
 ```python
