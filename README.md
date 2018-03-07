@@ -19,6 +19,9 @@ A plain wrapper around psycopg2
 ## Usage
 For usage see the [examples](docs/EXAMPLES.md) document.
 
+## Contribution
+If you want to contribute to the project, just fork it and make a pull request
+
 ## Licensing
 [MIT](LICENSE)
 
