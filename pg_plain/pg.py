@@ -19,6 +19,21 @@ class Pg:
             db=self.database, user=self.user, passwd=self.passwd
         ))
 
+    def get_conn_params(self):
+        """
+        Returns database conection parameters
+        :return: connection params dict
+        """
+        conn_params = {
+            "Host": self.host,
+            "Port": self.port,
+            "Database": self.database,
+            "User": self.user,
+            "Password": self.passwd
+        }
+
+        return conn_params
+
     def connect(self, conn_dict):
         """
         Connect to the database
@@ -49,6 +64,7 @@ class Pg:
             self.cursor = self.conn.cursor()
         except Exception as e:
             logger.exception(e.message)
+            raise Exception('could not connect to the server')
 
     def execute(self, query, params):
         """
